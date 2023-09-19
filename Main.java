@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         // variaveis locais da main
-        int n = 0;
-        int end = 0;
+        boolean end = false;
+        int n;
         // Instanciando um baralho novo e ja o embaralhando
         BaralhoDeCartas baralho = new BaralhoDeCartas();
         baralho.embaralhar();
@@ -18,51 +18,39 @@ public class Main {
         }
         ////////////////////////////////////////////////
         // loop principal do game
-        while (end != 1) {
+        while (end == false) {
             for (int i = 0; i < n; i++) {
-                int stop = 0;
-                int black_jack_count = 0;
+                int BJC = 0;
+                Boolean stop = false;
+                Carta carta;
                 // loop de cada jogador
-                while (stop != 1) {
-                    Carta carta = baralho.comprar();
+                System.out.println("\n\n\n\n\n");
+                while (stop == false) {
+                    BJC = 0;
+                    carta = baralho.comprar();
+  
                     System.out.println("\njogador " + (i + 1) + " retirou um: " + carta);
-                    // Ás valendo 11 ou 1
-                    if (carta.getValue() == 1 && players[i].getPoints() <= 10) {
-                        players[i].setPoints(players[i].getPoints() + 11);
-                    } else {
-                        players[i].setPoints(players[i].getPoints() + carta.getValue()); //soma dos pontos
-                    }
+                    players[i].somaPoints(carta);
                     // exibindo quantidade de pontos
                     System.out.println("Total = " + players[i].getPoints());
-                    // processo para verificar se ganhou 
-                    if (players[i].getPoints() == 21) {
-                        if (black_jack_count == 1) {
-                            System.out.println("O Jogador " + (i +1) + " Venceu Com BLACK JACK !!!" ); 
-                        } else {
-                            System.out.println("O Jogador " + (i +1) + " Venceu Com 21 Pontos !!!" ); 
-                        }  
-                        return;
-                    } else {
-                        // se perdeu
-                        if (players[i].getPoints() > 21) {
-                            System.out.println("estourou a banca,jogador  perdeu \n");
-                            stop = 1;
-                        } else {
-                            // se quer cuma nova carta ou nao
-                            System.out.println("\n jogador " + (i + 1) + " deseja Contiuar?:\n");
-                            System.out.println("Sim - 1");
-                            System.out.println("Não - 0");
-                            if (input.nextInt() == 0) {
-                                stop = 1;
-                            }
+                    stop = players[i].verificaPoints(BJC);
+                    // se quer cuma nova carta ou nao
+                    if( stop == false){
+                        System.out.println("\n jogador " + (i + 1) + " deseja Contiuar?:\n");
+                        System.out.println("Sim - 1");
+                        System.out.println("Não - 0");
+                        if (input.nextInt() == 0) {
+                          stop =  true;
                         }
-                        black_jack_count++;
-                    }
+                    }   
+                    BJC++;
                 }
-                end = 1;
+                end = true;
             }
         }
-
+        //fazer verificação de que nao houve ganhadores
+        // fazer rodada da banca
+        // limitar BJC a 6
         int Winer = 0;
         int WinerPoints = 0;
         for (int index = 0; index < n; index++) {
