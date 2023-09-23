@@ -29,11 +29,9 @@ public class Main {
                     BJC = 0;
                     carta = baralho.comprar();
 
-                    carta.desenharCarta();
-                    System.out.println("\njogador " + (i + 1) + " retirou um: " + carta);
-
                     //desenha a carta
                     carta.desenharCarta();
+                    System.out.println("\njogador " + (i + 1) + " retirou um: " + carta);
 
                     players[i].somaPoints(carta);
                     // exibindo quantidade de pontos
