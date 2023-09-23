@@ -469,6 +469,5 @@ public class Carta {
             System.out.println("|___%%%>|");
          }
       }
-  }
-
+   }
 } // end class Carta
