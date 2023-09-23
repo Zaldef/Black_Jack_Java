@@ -20,6 +20,7 @@ public class Main {
 
         while (end != 1) {
             for (int i = 0; i < n; i++) {
+<<<<<<< Updated upstream
 
                 int stop = 0;
                 int black_jack_count = 0;
@@ -36,6 +37,24 @@ public class Main {
                     } else {
                         players[i].setPoints(players[i].getPoints() + card.getValue());
                     }
+=======
+                int BJC = 0;
+                Boolean stop = false;
+                Carta carta;
+                // loop de cada jogador
+                System.out.println("\n\n\n\n\n");
+                while (stop == false) {
+                    BJC = 0;
+                    carta = baralho.comprar();
+
+                    System.out.println("\njogador " + (i + 1) + " retirou um: " + carta);
+
+                    //desenha a carta
+                    carta.desenharCarta();
+
+                    players[i].somaPoints(carta);
+                    // exibindo quantidade de pontos
+>>>>>>> Stashed changes
                     System.out.println("Total = " + players[i].getPoints());
                     if (players[i].getPoints() == 21) {
                         if (black_jack_count == 1) {
@@ -83,7 +102,13 @@ public class Main {
                 }
                 
             }
+<<<<<<< Updated upstream
 
+=======
+            else if (players[index].getPoints() == players[index].getPoints()){
+                System.out.println("Jogo Empatado!!! Nenhum jogador vencedor" );
+            }
+>>>>>>> Stashed changes
         }
 
         System.out.println("\n O Jogador " + Winer + " Venceu Com " + WinerPoints + " Pontos" );
