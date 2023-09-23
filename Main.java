@@ -28,8 +28,11 @@ public class Main {
                 while (stop == false) {
                     BJC = 0;
                     carta = baralho.comprar();
-  
+
+                    //desenha a carta
+                    carta.desenharCarta();
                     System.out.println("\njogador " + (i + 1) + " retirou um: " + carta);
+
                     players[i].somaPoints(carta);
                     // exibindo quantidade de pontos
                     System.out.println("Total = " + players[i].getPoints());

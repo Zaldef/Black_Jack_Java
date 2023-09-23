@@ -37,12 +37,12 @@ public class Player {
         } else {
             // se perdeu
             if (points > 21 ) {
-                System.out.println("estourou a banca,jogador perdeu \n");
+                System.out.println("Estourou a banca, jogador perdeu \n");
                 return true;
             } 
         }
         if (BJC == 5){
-            System.out.println("estourou o limite de cartas,jogador perdeu \n");
+            System.out.println("Estourou o limite de cartas, jogador perdeu \n");
             return true;
         }
         return false;
