@@ -89,7 +89,7 @@ public class Carta {
          else if(naipe == "Paus"){
             System.out.println(" _______ ");
             System.out.println("|" + num + "      |");
-            System.out.println("|  & &  |");
+            System.out.println("|   &   |");
             System.out.println("|       |");
             System.out.println("|   &   |");
             System.out.println("|______z|");
